@@ -14,4 +14,4 @@ cprint.o: cprint.c
 
 .PHONY:
 clean: 
-	-rm *.o $(executable)
+	-rm *.o $(executable) *.mod
