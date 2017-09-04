@@ -5,7 +5,7 @@
 [https://github.com/sourceryinstitute/OpenCoarrays/blob/master/README.md       ]:#
 <div align="center">
 
-[![Sourcery Institute][sourcery-institute logo]]
+[![Sourcery Institute][sourcery-institute logo]](www.sourceryinstitute.org)
 
 fidbits
 =======
