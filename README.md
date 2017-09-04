@@ -9,6 +9,8 @@
 
 fidbits
 =======
+<div align="center">
+
 Fortran tidbits: random code snippets produced in conversations that seem worth
 preserving for future reference:
 
