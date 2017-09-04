@@ -5,7 +5,7 @@
 [https://github.com/sourceryinstitute/OpenCoarrays/blob/master/README.md       ]:#
 <div align="center">
 
-[![Sourcery Institute][sourcery-institute logo]][Sourcery, Inc.]
+[![Sourcery Institute][sourcery-institute logo]]
 
 fidbits
 =======
@@ -14,17 +14,11 @@ preserving for future reference:
 
 </div>
 
-C-Interoperability
-------------------
-The problem: A question arose how to pass a derived-type variable with allocatable components to C. 
-
-The solution: The proposed solution involves defining a sister derived type
-
-Background:
-Although derived types with allocatable components are not themselves interoperable, Note 18.10 in 
-the Fortran 2015 standard indicates that the value of a component of type `c_ptr` "can be the C 
-address of such an entity."
+A fidbit might contain a directory inside the [src](./src) subdirectory with
+* A README.md file summarizing the problem.
+* A compilable code example demonstrating the solution. 
+* Code comments preceded by the double-exclamation-mark notation expected by FORD 
+  and positioned on the line(s) immediately following the line being described 
 
 [Hyperlinks]:#
-[C-Interoperability]: #c-interoperability
 [sourcery-institute logo]: http://www.sourceryinstitute.org/uploads/4/9/9/6/49967347/sourcery-logo-rgb-hi-rez-1.png
