@@ -9,7 +9,7 @@
 
 fidbits
 =======
-<div align="center">
+<div align="left">
 
 Fortran tidbits: random code snippets produced in conversations that seem worth
 preserving for future reference:
