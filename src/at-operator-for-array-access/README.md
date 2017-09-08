@@ -16,7 +16,7 @@ conditional_humidity = relative_humidity( nearest_neighbor(1),nearest_neighbor(2
 ```
 
 In Mathematica, a much more compact notation exists for such a purpose:
-```fortran
+```Mathematica
 conditional_humidity  = relative_humidity  @@ nearest_neighbor 
 ```
 It might be useful to define a derived type whose structure constructor may
