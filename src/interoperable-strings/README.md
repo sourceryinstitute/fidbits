@@ -17,6 +17,9 @@ assignment is used to persist the dummy argument recasting/reshaping
 once the scope of the procedure is left. See the functions in
 `c_f_string.f90`.
 
+[FORD] generated documentation can be viewed at
+<https://sourceryinstitute.github.io/fidbits/src/interoperable-strings/doc/index.html>
+
 Correct output looks like:
 
 ```
@@ -39,3 +42,4 @@ SpeciesName_C(7): O3
 
 [fidbits]: https://github.com/sourceryinstitute/fidbits
 [@IanHarvey]: https://github.com/IanHarvey
+[FORD]: https://github.com/cmacmackin/ford
