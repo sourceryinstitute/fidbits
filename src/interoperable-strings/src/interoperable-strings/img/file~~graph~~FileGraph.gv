@@ -1,0 +1,8 @@
+digraph "file~~graph~~FileGraph" {
+	graph [concentrate=true id="file~~graph~~FileGraph" rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"sourcefile~c_f_string.f90" [label="c_f_string.f90" URL="../sourcefile/c_f_string.f90.html" color="#f0ad4e" fontcolor=white style=filled]
+		"sourcefile~example.f90" [label="example.f90" URL="../sourcefile/example.f90.html" color="#f0ad4e" fontcolor=white style=filled]
+			"sourcefile~c_f_string.f90" -> "sourcefile~example.f90" [color="#000000"]
+}

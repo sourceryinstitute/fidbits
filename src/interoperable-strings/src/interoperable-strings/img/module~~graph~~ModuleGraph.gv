@@ -1,0 +1,17 @@
+digraph "module~~graph~~ModuleGraph" {
+	graph [concentrate=true id="module~~graph~~ModuleGraph" rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"module~c_f_string_m" [label=c_f_string_m URL="../module/c_f_string_m.html" color="#337AB7" fontcolor=white style=filled]
+		"program~main" [label=main URL="../program/main.html" color="#f0ad4e" fontcolor=white style=filled]
+		"proc~c_f_string" [label=c_f_string URL="../proc/c_f_string.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~c_str_to_fortran" [label=c_str_to_fortran URL="../proc/c_str_to_fortran.html" color="#d94e8f" fontcolor=white style=filled]
+		graph [size="11.875,1000.0"]
+		ISO_C_BINDING [label=ISO_C_BINDING URL="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fC_005fBINDING.html" color="#337AB7" fontcolor=white style=filled]
+			ISO_C_BINDING -> "program~main" [color="#000000" style=dashed]
+			"module~c_f_string_m" -> "program~main" [color="#000000" style=dashed]
+		ISO_FORTRAN_ENV [label=ISO_FORTRAN_ENV URL="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" color="#337AB7" fontcolor=white style=filled]
+			ISO_FORTRAN_ENV -> "program~main" [color="#000000" style=dashed]
+			ISO_C_BINDING -> "proc~c_f_string" [color="#000000" style=dashed]
+			ISO_C_BINDING -> "proc~c_str_to_fortran" [color="#000000" style=dashed]
+}
