@@ -14,23 +14,22 @@ program main
   !! Example program to show the usage of [[c_f_string(proc)]] and [[c_str_to_fortran(proc)]]
   !! Correct output looks like:
   !!
-  !! ```
-  !! ./example
-  !! SpeciesName_C(1): N
-  !! SpeciesName_C(1): N
-  !! SpeciesName_C(2): N2
-  !! SpeciesName_C(2): N2
-  !! SpeciesName_C(3): NO
-  !! SpeciesName_C(3): NO
-  !! SpeciesName_C(4): NO2
-  !! SpeciesName_C(4): NO2
-  !! SpeciesName_C(5): O
-  !! SpeciesName_C(5): O
-  !! SpeciesName_C(6): O2
-  !! SpeciesName_C(6): O2
-  !! SpeciesName_C(7): O3
-  !! SpeciesName_C(7): O3
-  !! ```
+  !!    ./example
+  !!    SpeciesName_C(1): N
+  !!    SpeciesName_C(1): N
+  !!    SpeciesName_C(2): N2
+  !!    SpeciesName_C(2): N2
+  !!    SpeciesName_C(3): NO
+  !!    SpeciesName_C(3): NO
+  !!    SpeciesName_C(4): NO2
+  !!    SpeciesName_C(4): NO2
+  !!    SpeciesName_C(5): O
+  !!    SpeciesName_C(5): O
+  !!    SpeciesName_C(6): O2
+  !!    SpeciesName_C(6): O2
+  !!    SpeciesName_C(7): O3
+  !!    SpeciesName_C(7): O3
+
 
   use c_f_string_m, only: c_f_string, c_str_to_fortran
   use, intrinsic :: ISO_FORTRAN_ENV, only: stdout => output_unit
