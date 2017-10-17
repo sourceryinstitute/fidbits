@@ -16,7 +16,7 @@ module c_f_string_m
   !! copies
   implicit none
   private
-  public :: c_f_string, c_str_to_fortran
+  public :: c_f_string!, c_str_to_fortran
 
   interface
      !! author: Izaak "Zaak" Beekman
@@ -41,7 +41,7 @@ module c_f_string_m
   end interface
 
 contains
-  subroutine c_f_string(c_str, f_str)
+  function c_f_string(c_str) result(f_str)
     !! author: Izaak "Zaak" Beekman
     !! date: 2017-09-29
     !! display: true
@@ -64,7 +64,7 @@ contains
     use, intrinsic :: ISO_C_BINDING, only: c_char, c_f_pointer, c_ptr
     type(c_ptr), intent(in) :: c_str
     !! C `char` string to convert to a scalar Fortran string
-    character(kind=c_char, len=:), pointer, intent(out) :: f_str
+    character(kind=c_char, len=:), pointer :: f_str
     !! Scalar `character` `pointer` of type `c_char` corresponding to `c_str`
     character(kind=c_char), pointer :: char_array(:)
     !! Temp array of length 1 characters
@@ -94,29 +94,29 @@ contains
 
       ptr => scalar(1)
     end subroutine
-  end subroutine
-
-  function c_str_to_fortran(c_str) result(res)
-    !! author: Izaak "Zaak" Beekman
-    !! date: 2017-09-29
-    !! display: true
-    !! graph: true
-    !!
-    !! Return a Fortran scalar string corresponding to a C string using
-    !! [[c_f_string(proc)]] and then casting it as a non-pointer
-    !!
-    !! @note This will probably cause a temporary variable to be allocated
-
-    use, intrinsic :: ISO_C_BINDING, only: c_char, c_ptr
-    type(c_ptr), intent(in) :: c_str
-    !! C string to be converted
-    character(len=:), allocatable :: res
-    !! Function return, a native Fortran, scalar `character` variable
-    character(kind=c_char, len=:), pointer :: f_ptr_str
-    !! Temporary variable to point to C string as a native Fortran pointer
-
-    call c_f_string(c_str,f_ptr_str)
-    res = f_ptr_str(:) ! realloc on assignment, type conversion if possible
-                       ! and required
   end function
+
+  ! function c_str_to_fortran(c_str) result(res)
+  !   !! author: Izaak "Zaak" Beekman
+  !   !! date: 2017-09-29
+  !   !! display: true
+  !   !! graph: true
+  !   !!
+  !   !! Return a Fortran scalar string corresponding to a C string using
+  !   !! [[c_f_string(proc)]] and then casting it as a non-pointer
+  !   !!
+  !   !! @note This will probably cause a temporary variable to be allocated
+
+  !   use, intrinsic :: ISO_C_BINDING, only: c_char, c_ptr
+  !   type(c_ptr), intent(in) :: c_str
+  !   !! C string to be converted
+  !   character(len=:), allocatable :: res
+  !   !! Function return, a native Fortran, scalar `character` variable
+  !   character(kind=c_char, len=:), pointer :: f_ptr_str
+  !   !! Temporary variable to point to C string as a native Fortran pointer
+
+  !   call c_f_string(c_str,f_ptr_str)
+  !   res = f_ptr_str(:) ! realloc on assignment, type conversion if possible
+  !                      ! and required
+  ! end function
 end module

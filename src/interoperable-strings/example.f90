@@ -31,7 +31,7 @@ program main
   !!    SpeciesName_C(7): O3
 
 
-  use c_f_string_m, only: c_f_string, c_str_to_fortran
+  use c_f_string_m, only: c_f_string!, c_str_to_fortran
   use, intrinsic :: ISO_FORTRAN_ENV, only: stdout => output_unit
   use, intrinsic :: ISO_C_BINDING, only: c_char, c_ptr, c_size_t
 
@@ -68,9 +68,9 @@ program main
 
     do i = 1, n_elem
        c_idx = i - 1
-       write(stdout, '(A, I0, A, A)') "SpeciesName_C(", i, "): ", c_str_to_fortran(SpeciesName_C(c_idx))
-       call c_f_string(SpeciesName_C(c_idx),f_char_ptr)
-       write(stdout, '(A, I0, A, A)') "SpeciesName_C(", i, "): ", f_char_ptr
+       write(stdout, '(A, I0, A, A)') "SpeciesName_C(", i, "): ", c_f_string(SpeciesName_C(c_idx)) !c_str_to_fortran(SpeciesName_C(c_idx))
+       ! call c_f_string(SpeciesName_C(c_idx),f_char_ptr)
+       ! write(stdout, '(A, I0, A, A)') "SpeciesName_C(", i, "): ", f_char_ptr
     end do
 
   end block
