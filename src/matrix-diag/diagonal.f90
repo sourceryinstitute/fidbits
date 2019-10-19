@@ -9,6 +9,8 @@ program main
 
   associate( diag => [ (A(i,i), i=1,N) ] )
     write(*,'("diag: ",*(g0,:,", "))') nint(diag)
+    A(1,1) = 1010
+    write(*,'("diag: ",*(g0,:,", "))') nint(diag)
   end associate
   write(*,'(A)') "A:"
   do j = 1, N
