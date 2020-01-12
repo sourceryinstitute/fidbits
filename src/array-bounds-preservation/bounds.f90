@@ -3,33 +3,32 @@ program main
   !!
   !! Tabulate scenarios that do or do not preserve array bounds
   implicit none
-  character(len=*), parameter :: output_file= 'table.md'
   character(len=*), parameter :: markdown_row = '(*(G0,:,"|"))'
   character(len=*), parameter :: heading1 = "Bounds-preserving", heading2 = "Fortran feature"
-  integer, parameter :: width(*)=[len(heading1), len(heading2)]
+  integer, parameter :: width=len(heading1)
   integer, allocatable :: a(:), b(:), c(:)
   integer file_unit
 
-  open(file=output_file, newunit=file_unit)
+  open(file='bounds.md', newunit=file_unit)
   write(file_unit, markdown_row) heading1, heading2
   write(file_unit, markdown_row) horizontal_line(heading1), horizontal_line(heading2)
 
   !  --- True cases ----
 
-  allocate(a(-1:1))
+  allocate(a(-1:1),source=0)
   b = a
   write(file_unit, markdown_row) &
-    table_entry(width(1), all([lbound(b), ubound(b)] == [lbound(a), ubound(a)])), "intrinsic assignment"
+    table_entry(width, all([lbound(b), ubound(b)] == [lbound(a), ubound(a)])), "intrinsic assignment"
 
   allocate(c, source = a)
   write(file_unit, markdown_row) &
-     table_entry(width(1), all([lbound(c), ubound(c)] == [lbound(a), ubound(a)])), "source allocation without specified bounds"
+     table_entry(width, all([lbound(c), ubound(c)] == [lbound(a), ubound(a)])), "source allocation without specified bounds"
 
   call allocatable_assumed_shape(a)
 
   associate( n => a)
     write(file_unit, markdown_row) &
-      table_entry(width(1), all([lbound(n), ubound(n)] == [lbound(a), ubound(a)])), "associate name"
+      table_entry(width, all([lbound(n), ubound(n)] == [lbound(a), ubound(a)])), "associate name"
   end associate
 
   !  --- False cases ----
@@ -37,20 +36,20 @@ program main
   call non_allocatable_assumed_shape(a)
 
   write(file_unit, markdown_row) &
-    table_entry(width(1), all([lbound(function_result()), ubound(function_result())] == [-1, 1])), "function result"
+    table_entry(width, all([lbound(function_result()), ubound(function_result())] == [-1, 1])), "function result"
 
 contains
 
   subroutine non_allocatable_assumed_shape(d)
     integer d(:)
     write(file_unit, markdown_row) &
-      table_entry(width(1), all([lbound(d), ubound(d)] == [lbound(a), ubound(a)])), "non-allocatable, assumed-shape dummy argument"
+      table_entry(width, all([lbound(d), ubound(d)] == [lbound(a), ubound(a)])), "non-allocatable, assumed-shape dummy argument"
   end subroutine
 
   subroutine allocatable_assumed_shape(d)
     integer, allocatable :: d(:)
     write(file_unit, markdown_row) &
-      table_entry(width(1), all([lbound(d), ubound(d)] == [lbound(a), ubound(a)])), "allocatable, assumed-shape dummy argument"
+      table_entry(width, all([lbound(d), ubound(d)] == [lbound(a), ubound(a)])), "allocatable, assumed-shape dummy argument"
   end subroutine
 
   function function_result() result(d)
