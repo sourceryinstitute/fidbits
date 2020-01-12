@@ -12,6 +12,6 @@ If you would like to add other table entries, please feel free to
 submit a pull request with updated code.
 
 [Hyperlinks]:#
-[Morfeus]: https://www.sourceryinstitute.org/sourceryinstitute/MORFEUS-Source
+[Morfeus]: https://github.com/sourceryinstitute/MORFEUS-Source
 [source code]: ./bounds.f90
 [table]: ./bounds.md
